@@ -23,17 +23,16 @@ import {
 import history from "../../../utils/history";
 
 const AdminPageList = () => {
-    const [currentPage, setCurrentPage] = useState(1);
-    const [searchQuery, setSearchQuery] = useState("");
-    const [sortBy, setSortBy] = useState({ path: "name", order: "asc" });
-    const pageSize = 4;
-
     const dispatch = useDispatch();
 
     const products = useSelector(getProducts());
-
     const categories = useSelector(getCategories());
     const categoriesLoading = useSelector(getCategoriesLoadingStatus());
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [searchQuery, setSearchQuery] = useState("");
+    const [sortBy, setSortBy] = useState({ path: "name", order: "asc" });
+    const pageSize = 8;
 
     useEffect(() => {
         dispatch(loadProductsList());

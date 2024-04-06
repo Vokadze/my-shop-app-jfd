@@ -23,17 +23,17 @@ import {
 } from "../../../store/products";
 
 const ProductsListPage = () => {
+    const dispatch = useDispatch();
+
+    const products = useSelector(getProducts());
+    const categories = useSelector(getCategories());
+    const categoriesLoading = useSelector(getCategoriesLoadingStatus());
+
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState();
     const [sortBy, setSortBy] = useState({ iter: "price", order: "asc" });
-    const pageSize = 4;
-
-    const dispatch = useDispatch();
-    const products = useSelector(getProducts());
-
-    const categories = useSelector(getCategories());
-    const categoriesLoading = useSelector(getCategoriesLoadingStatus());
+    const pageSize = 6;
 
     useEffect(() => {
         dispatch(loadCategoriesList());
